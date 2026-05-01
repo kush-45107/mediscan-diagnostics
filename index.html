@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediScan AI — X-Ray Diagnostics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ANIMATED BACKGROUND PARTICLES -->
+<div class="bg-grid"></div>
+<div class="particles" id="particles"></div>
+<div class="gradient-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">
+    <div class="logo-icon-wrap">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="url(#logoGrad)"/>
+        <defs>
+          <linearGradient id="logoGrad" x1="0" y1="0" x2="24" y2="24">
+            <stop offset="0%" stop-color="#00d4ff"/>
+            <stop offset="100%" stop-color="#a855f7"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="logo-text-wrap">
+      <span class="logo-main">MediScan</span>
+      <span class="logo-ai">Diagnostics</span>
+    </div>
+  </div>
+  <div class="nav-status">
+    <span class="status-dot"></span>
+    <span class="status-text">System Online</span>
+  </div>
+</nav>
+
+<!-- UPLOAD PAGE -->
+<div class="page-container" id="uploadPage">
+  <div class="glass-card upload-card">
+    <div class="card-header">
+      <div class="card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z" fill="url(#uploadIconGrad)"/>
+          <defs>
+            <linearGradient id="uploadIconGrad" x1="0" y1="0" x2="24" y2="24">
+              <stop offset="0%" stop-color="#00d4ff"/>
+              <stop offset="100%" stop-color="#a855f7"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div>
+        <h2 class="card-title">Upload X-Ray Scan</h2>
+        <p class="card-subtitle">Supported: JPEG, PNG, DICOM</p>
+      </div>
+    </div>
+
+    <!-- DROP ZONE -->
+    <div class="drop-zone" id="dropZone">
+      <div class="drop-zone-inner" id="uploadBox">
+        <div class="upload-visual">
+          <div class="scan-ring scan-ring-1"></div>
+          <div class="scan-ring scan-ring-2"></div>
+          <div class="scan-ring scan-ring-3"></div>
+          <div class="xray-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" fill="url(#xrayGrad)"/>
+              <defs>
+                <linearGradient id="xrayGrad" x1="0" y1="0" x2="24" y2="24">
+                  <stop offset="0%" stop-color="#00d4ff"/>
+                  <stop offset="100%" stop-color="#a855f7"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <h3 class="drop-title">Drop X-Ray Here</h3>
+        <p class="drop-sub">or click to browse your files</p>
+        <input type="file" id="fileInput" accept="image/*" hidden>
+        <button class="btn-primary" onclick="document.getElementById('fileInput').click()">
+          <span class="btn-icon">📁</span>
+          Choose File
+        </button>
+      </div>
+
+      <!-- PREVIEW -->
+      <div class="preview-zone" id="previewBox" style="display:none">
+        <div class="preview-header">
+          <span class="preview-label">X-Ray Preview</span>
+          <button class="btn-ghost" onclick="resetUpload()">✕ Change</button>
+        </div>
+        <div class="preview-img-wrap">
+          <img id="previewImg" alt="X-Ray Preview">
+          <div class="preview-overlay">
+            <div class="scan-line"></div>
+          </div>
+        </div>
+        <button class="btn-analyze" onclick="analyzeImage()">
+          <span class="analyze-icon">🔬</span>
+          <span> Generate Report</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <div class="security-badge">🔒 AI-Powered Radiology Analysis</div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="features-row">
+    <div class="feature-pill">
+      <span class="pill-icon">⚡</span>
+      <span>Real-time Analysis</span>
+    </div>
+    <div class="feature-pill">
+      <span class="pill-icon">🧠</span>
+      <span>Neural Network</span>
+    </div>
+    <div class="feature-pill">
+      <span class="pill-icon">📊</span>
+      <span>Probability Report</span>
+    </div>
+  </div>
+</div>
+
+<!-- LOADING OVERLAY -->
+<div class="loading-overlay" id="loading" style="display:none">
+  <div class="loading-card">
+    <div class="loader-ring">
+      <div class="loader-ring-inner"></div>
+      <div class="loader-pulse"></div>
+    </div>
+    <h3 class="loading-title">Analyzing X-Ray</h3>
+    <p class="loading-sub">Running neural network inference...</p>
+    <div class="loading-steps">
+      <div class="step active" id="step1">Preprocessing image</div>
+      <div class="step" id="step2">Running CNN model</div>
+      <div class="step" id="step3">Generating report</div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS PAGE -->
+<div class="page-container" id="resultsPage" style="display:none">
+  <div class="results-header">
+    <button class="btn-back" onclick="goBack()">
+      ← New Scan
+    </button>
+    <div class="results-title-wrap">
+      <h2 class="results-title">Diagnosis Report</h2>
+      <span class="results-timestamp" id="reportTime"></span>
+    </div>
+  </div>
+
+  <div class="results-layout">
+    <!-- LEFT: IMAGE -->
+    <div class="result-img-card glass-card">
+      <div class="img-card-header">
+        <span class="img-card-title">Scan Analysis</span>
+        <span class="img-card-tag">Processed</span>
+      </div>
+      <div class="result-img-wrap">
+        <img id="resultImg" alt="Result">
+        <div class="img-corner img-corner-tl"></div>
+        <div class="img-corner img-corner-tr"></div>
+        <div class="img-corner img-corner-bl"></div>
+        <div class="img-corner img-corner-br"></div>
+      </div>
+      <div class="img-card-footer">
+        <div class="img-meta">
+          <span>🔍 AI Scanned</span>
+          <span>✓ Verified</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: RESULTS -->
+    <div class="result-data-col">
+      <div class="glass-card results-card">
+        <div class="results-card-header">
+          <h3 class="results-card-title">Top 5 Findings</h3>
+          <span class="results-card-sub">Sorted by probability</span>
+        </div>
+        <div class="confidence bar">
+          <div class="confidence-fill"></div>
+        </div>
+        <div id="resultsContent"></div>
+      </div>
+
+      <div class="glass-card disclaimer-card">
+        <div class="disclaimer-icon">⚕️</div>
+        <p class="disclaimer-text">This AI report is for informational purposes only. Always consult a qualified Radiologist, Doctors or physician for medical decisions.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
