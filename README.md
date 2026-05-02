@@ -38,7 +38,7 @@ Flask API (AWS EC2)
         ↓
 DenseNet-121 Model (Fine-tuned)
         ↓
-14 Disease Probabilities + LLM Advice
+14 Disease Probabilities
         ↓
 Results displayed to User
 ```
@@ -82,8 +82,7 @@ mediscan-ai/
 | Backend | Python, Flask |
 | Model | TensorFlow, DenseNet-121 |
 | Dataset | NIH Chest X-Ray 14 |
-| Cloud | AWS EC2, AWS S3 |
-| LLM | Groq (LLaMA 3) |
+| Cloud | AWS EC2, AWS S3 for backup |
 
 ---
 
