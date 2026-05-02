@@ -1,6 +1,5 @@
 const API_URL = '/analyze';
 
-/* ===== PARTICLES ===== */
 (function initParticles() {
   const container = document.getElementById('particles');
   const colors = ['#00d4ff', '#a855f7', '#ec4899'];
@@ -20,7 +19,6 @@ const API_URL = '/analyze';
   }
 })();
 
-/* ===== FILE INPUT ===== */
 const fileInput = document.getElementById('fileInput');
 const previewImg = document.getElementById('previewImg');
 const previewBox = document.getElementById('previewBox');
@@ -42,7 +40,6 @@ function loadPreview(file) {
   reader.readAsDataURL(file);
 }
 
-/* ===== DRAG & DROP ===== */
 const dropZone = document.querySelector('.drop-zone');
 
 dropZone.addEventListener('dragover', (e) => {
@@ -60,7 +57,6 @@ dropZone.addEventListener('drop', (e) => {
   }
 });
 
-/* ===== RESET ===== */
 function resetUpload() {
   fileInput.value = '';
   previewImg.src = '';
@@ -68,7 +64,6 @@ function resetUpload() {
   uploadBox.style.display = 'block';
 }
 
-/* ===== PAGE NAVIGATION ===== */
 function showResultsPage() {
   document.getElementById('uploadPage').style.display = 'none';
   const resultsPage = document.getElementById('resultsPage');
@@ -84,7 +79,6 @@ function goBack() {
   resetUpload();
 }
 
-/* ===== LOADING STEPS ANIMATION ===== */
 function animateLoadingSteps() {
   const steps = ['step1', 'step2', 'step3'];
   let idx = 0;
@@ -104,7 +98,6 @@ function animateLoadingSteps() {
   advance();
 }
 
-/* ===== ANALYZE ===== */
 async function analyzeImage() {
   const file = fileInput.files[0];
   if (!file) return;
@@ -143,7 +136,6 @@ async function analyzeImage() {
   }
 }
 
-/* ===== TO BASE64 ===== */
 function toBase64(file) {
   return new Promise((res, rej) => {
     const reader = new FileReader();
@@ -153,7 +145,6 @@ function toBase64(file) {
   });
 }
 
-/* ===== SHOW RESULTS ===== */
 function showResults(data) {
   const resultImg = document.getElementById('resultImg');
   resultImg.src = previewImg.src;
@@ -193,7 +184,6 @@ function showResults(data) {
   showResultsPage();
 }
 
-/* ===== SHOW ERROR ===== */
 function showError(msg) {
   // Show a non-blocking error on upload page
   const existing = document.getElementById('errorMsg');
@@ -213,15 +203,11 @@ function showError(msg) {
   if (uploadCard) uploadCard.after(err);
 }
 
-/* ===== HELPER ===== */
 function escapeHtml(str) {
   if (!str) return '';
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
-/* ===== UI INTERACTIONS ===== */
-
-/* GLASS HOVER LIGHT FOLLOW */
 document.querySelectorAll('.glass-card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const rect = card.getBoundingClientRect();
