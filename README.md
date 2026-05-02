@@ -68,7 +68,7 @@ mediscan-ai/
 ├── backend/
 │   └── app.py           ← Flask API
 ├── model/
-│   └── training_notebook.ipynb  ← Kaggle Training Code
+│   └── Model.ipynb  ← Kaggle Training Code
 └── README.md
 ```
 
@@ -83,32 +83,6 @@ mediscan-ai/
 | Model | TensorFlow, DenseNet-121 |
 | Dataset | NIH Chest X-Ray 14 |
 | Cloud | AWS EC2, AWS S3 for backup |
-
----
-
-## ⚙️ Setup & Run
-
-### Backend (EC2)
-```bash
-# Virtual environment
-python3 -m venv medenv
-source medenv/bin/activate
-
-# Install dependencies
-pip install tensorflow flask flask-cors boto3 pillow numpy opencv-python groq
-
-# Download model from S3
-aws s3 cp s3://YOUR_BUCKET/best_model_finetuned.keras /home/ubuntu/best_model.keras
-
-# Run Flask
-python app.py
-```
-
-### Frontend
-```bash
-# Open index.html in browser
-# Or use Live Server in VS Code
-```
 
 ---
 
@@ -128,7 +102,3 @@ python app.py
 > Always consult a qualified doctor for medical decisions.
 
 ---
-
-## 👨‍💻 Developer
-
-Made with ❤️ | Deep Learning Project
