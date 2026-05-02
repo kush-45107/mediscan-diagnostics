@@ -1,4 +1,4 @@
-const API_URL = 'http://15.135.110.244:5000/analyze';
+const API_URL = '/analyze';
 
 /* ===== PARTICLES ===== */
 (function initParticles() {
