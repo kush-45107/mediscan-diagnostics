@@ -1,6 +1,6 @@
-# 🫁 MediScan AI — Serverless Medical Diagnostics
+# 🫁 MediScan Diagnostics
 
-![MediScan AI](https://img.shields.io/badge/AI-Medical%20Diagnostics-00e5ff?style=for-the-badge)
+![MediScan Diagnostics](https://img.shields.io/badge/AI-Medical%20Diagnostics-00e5ff?style=for-the-badge)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.13-orange?style=for-the-badge&logo=tensorflow)
 ![Flask](https://img.shields.io/badge/Flask-Backend-black?style=for-the-badge&logo=flask)
 ![AWS](https://img.shields.io/badge/AWS-EC2%20%7C%20S3-yellow?style=for-the-badge&logo=amazon-aws)
@@ -9,7 +9,7 @@
 
 ## 📌 Overview
 
-MediScan AI is an AI-powered chest X-Ray diagnostic platform that detects **14 different chest diseases** using Deep Learning. Upload an X-Ray image and get instant AI-powered analysis with disease probabilities.
+MediScan Diagnostics is an AI-powered chest X-Ray diagnostic platform that detects **14 different chest diseases** using Deep Learning. Upload an X-Ray image and get instant AI-powered analysis with disease probabilities.
 
 ---
 
