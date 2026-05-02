@@ -1,13 +1,23 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import tensorflow as tf
 import numpy as np
 import cv2
 import base64
-import io
+import os
 
 app = Flask(__name__)
 CORS(app)
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+@app.route('/')
+def home():
+    return send_from_directory(BASE_DIR, 'index.html')
+
+@app.route('/<path:path>')
+def static_files(path):
+    return send_from_directory(BASE_DIR, path)
 
 DISEASES = [
     'Atelectasis', 'Cardiomegaly', 'Effusion',
@@ -17,7 +27,7 @@ DISEASES = [
 ]
 
 print("Loading model...")
-model = tf.keras.models.load_model('/home/ubuntu/best_model.keras')
+model = tf.keras.models.load_model(os.path.join(BASE_DIR, 'best_model_finetuned.keras'))
 print("Model loaded!")
 
 @app.route('/analyze', methods=['POST'])
@@ -31,6 +41,7 @@ def analyze():
         img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         img = cv2.resize(img, (224, 224))
+
         img_array = img / 255.0
         img_array = np.expand_dims(img_array, axis=0)
 
@@ -54,6 +65,7 @@ def analyze():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
