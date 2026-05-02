@@ -219,9 +219,9 @@ function escapeHtml(str) {
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
-/* ===== 🚀 UI INTERACTIONS ===== */
+/* ===== UI INTERACTIONS ===== */
 
-/* 🔥 GLASS HOVER LIGHT FOLLOW */
+/* GLASS HOVER LIGHT FOLLOW */
 document.querySelectorAll('.glass-card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const rect = card.getBoundingClientRect();
@@ -230,7 +230,7 @@ document.querySelectorAll('.glass-card').forEach(card => {
   });
 });
 
-/* 🔥 BACKGROUND PARALLAX */
+/* BACKGROUND PARALLAX */
 document.addEventListener('mousemove', (e) => {
   const x = (e.clientX / window.innerWidth - 0.5) * 20;
   const y = (e.clientY / window.innerHeight - 0.5) * 20;

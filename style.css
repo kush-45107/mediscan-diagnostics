@@ -211,9 +211,8 @@
     max-width: 1400px;
     width: 100%;
     margin: 0 auto;
-  
-    /* 👇 yaha magic hai */
-    padding: 220px 24px 80px;  /* TOP SPACE increase */
+
+    padding: 220px 24px 80px;
   }
   
   /* ===== GLASS CARD ===== */
@@ -414,14 +413,14 @@
     border: 1px solid var(--glass-border);
     border-radius: 24px;
   
-    /* 🔥 BIGGER SIZE */
+    /* BIGGER SIZE */
     max-width: 900px;
     width: min(90%, 900px);
   
-    /* 🔥 MORE PREMIUM SPACING */
+    /* MORE PREMIUM SPACING */
     padding: 70px 80px;
   
-    /* 🔥 DEPTH + GLOW EFFECT */
+    /* DEPTH + GLOW EFFECT */
     box-shadow: 
       0 0 40px rgba(0, 212, 255, 0.15),
       0 0 80px rgba(168, 85, 247, 0.1);
@@ -520,7 +519,7 @@
     background: #050a14;
   }
   .result-img-wrap img {
-    max-height: 420px;   /* 🔥 bigger */
+    max-height: 420px;
   }
   .img-corner {
     position: absolute; width: 16px; height: 16px;
@@ -621,10 +620,7 @@
     .drop-zone-inner { padding: 32px 20px; }
   }
 
-
-/* ===== 🚀 ADVANCED UI EFFECTS ===== */
-
-/* 🔥 GLASS HOVER GLOW */
+/*  GLASS HOVER GLOW */
 .glass-card {
   position: relative;
   overflow: hidden;
@@ -643,7 +639,7 @@
   opacity: 1;
 }
 
-/* 🔥 CONFIDENCE BAR */
+/* CONFIDENCE BAR */
 .confidence-bar {
   height: 10px;
   background: rgba(255,255,255,0.05);
@@ -664,7 +660,7 @@
   from { width: 0; }
 }
 
-/* 🔥 BUTTON LIQUID EFFECT */
+/* BUTTON LIQUID EFFECT */
 .btn-primary::before {
   content: "";
   position: absolute;
@@ -681,7 +677,7 @@
   opacity: 1;
 }
 
-/* 🔥 RESULT ANIMATION */
+/* RESULT ANIMATION */
 .disease-item {
   opacity: 0;
   transform: translateY(20px);
@@ -695,7 +691,7 @@
   }
 }
 
-/* 🔥 ENHANCED SCAN LINE */
+/* ENHANCED SCAN LINE */
 .scan-line {
   height: 3px;
   box-shadow: 0 0 20px var(--cyan);
